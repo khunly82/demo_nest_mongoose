@@ -1,10 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { ArrayMaxSize, ArrayMinSize, IsNotEmpty, MaxLength, Min, MinLength } from 'class-validator';
+import { ArrayMaxSize, ArrayMinSize, IsInt, IsNotEmpty, IsNumber, MaxLength, Min, MinLength } from 'class-validator';
+import { HasMimeType, IsFile, MaxFileSize, MemoryStoredFile } from 'nestjs-form-data';
 
 export class PokemonFormDto {
   @IsNotEmpty()
-  @Min(1)
-  @ApiProperty()
+  @ApiProperty({ type: 'integer' })
   numero: number;
 
   @MinLength(2)
@@ -14,12 +14,18 @@ export class PokemonFormDto {
   nom: string;
 
   @IsNotEmpty()
-  @ArrayMinSize(1)
-  @ArrayMaxSize(2)
   @ApiProperty()
-  types: string[];
+  types: string;
 
-  //image: string;
+  @IsFile()
+  @MaxFileSize(1024 * 1024 * 5)
+  @HasMimeType(['image/*'])
+  @IsNotEmpty()
+  @ApiProperty({
+    type: 'string',
+    format: 'binary',
+  })
+  image: MemoryStoredFile;
 
   @IsNotEmpty()
   @ApiProperty()

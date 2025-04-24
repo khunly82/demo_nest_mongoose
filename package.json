@@ -21,8 +21,10 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
     "mongoose": "^8.13.2",
+    "nestjs-form-data": "^1.9.93",
     "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "sharp": "^0.34.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^11.0.0",

@@ -7,9 +7,13 @@ import { dresseurSchema } from './schemas/dresseur.schema';
 import { PokemonController } from './controllers/pokemon.controller';
 import * as process from 'node:process';
 import { ConfigModule } from '@nestjs/config';
+import { NestjsFormDataModule } from 'nestjs-form-data';
 
 @Module({
-  imports: [ConfigModule.forRoot()],
+  imports: [
+    ConfigModule.forRoot(),
+    NestjsFormDataModule,
+  ],
   controllers: [TestController, PokemonController],
   providers: [
     {
