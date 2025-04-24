@@ -5,6 +5,7 @@ import { Connection } from 'mongoose';
 import { pokemonSchema } from './schemas/pokemon.schema';
 import { dresseurSchema } from './schemas/dresseur.schema';
 import { PokemonController } from './controllers/pokemon.controller';
+import * as process from 'node:process';
 
 @Module({
   imports: [],
@@ -12,12 +13,14 @@ import { PokemonController } from './controllers/pokemon.controller';
   providers: [
     {
       provide: 'DB_CONNECTION',
-      useFactory: async () => await mongoose.connect('mongodb://localhost/exemple')
-    }, {
+      useFactory: async () => await mongoose.connect(process.env.MONGO_URI!)
+    },
+    {
       provide: 'POKEMON_MODEL',
       useFactory: (connection: Connection) => connection.model('pokemon', pokemonSchema),
       inject: ['DB_CONNECTION']
-    }, {
+    },
+    {
       provide: 'DRESSEUR_MODEL',
       useFactory: (connection: Connection) => connection.model('dresseur', dresseurSchema),
       inject: ['DB_CONNECTION']
