@@ -10,7 +10,7 @@ export class PokemonController {
   }
 
   @Get()
-  async getPokemon() {
-    return await this.pokemonModel.find();
+  getPokemon() {
+    return this.pokemonModel.find();
   }
 }

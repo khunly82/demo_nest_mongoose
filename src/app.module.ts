@@ -12,17 +12,12 @@ import { PokemonController } from './controllers/pokemon.controller';
   providers: [
     {
       provide: 'DB_CONNECTION',
-      useFactory: () => {
-        mongoose.connect('mongodb://localhost/exemple');
-        return mongoose;
-      }
-      },
-    {
+      useFactory: async () => await mongoose.connect('mongodb://localhost/exemple')
+    }, {
       provide: 'POKEMON_MODEL',
       useFactory: (connection: Connection) => connection.model('pokemon', pokemonSchema),
       inject: ['DB_CONNECTION']
-    },
-    {
+    }, {
       provide: 'DRESSEUR_MODEL',
       useFactory: (connection: Connection) => connection.model('dresseur', dresseurSchema),
       inject: ['DB_CONNECTION']
