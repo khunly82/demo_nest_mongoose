@@ -6,8 +6,7 @@ export class PokemonController {
 
   constructor(
     @Inject('POKEMON_MODEL') private pokemonModel: Model<any>
-  ) {
-  }
+  ) { }
 
   @Get()
   getPokemon() {

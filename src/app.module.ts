@@ -6,9 +6,10 @@ import { pokemonSchema } from './schemas/pokemon.schema';
 import { dresseurSchema } from './schemas/dresseur.schema';
 import { PokemonController } from './controllers/pokemon.controller';
 import * as process from 'node:process';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [],
+  imports: [ConfigModule.forRoot()],
   controllers: [TestController, PokemonController],
   providers: [
     {
