@@ -1,5 +1,6 @@
 import { PokemonIndexDto } from './pokemon-index.dto';
 import { ApiProperty } from '@nestjs/swagger';
+import { Pokemon } from '../models/pokemon.model';
 
 export class PokemonDetailsDto extends PokemonIndexDto {
   @ApiProperty()
@@ -7,7 +8,7 @@ export class PokemonDetailsDto extends PokemonIndexDto {
   @ApiProperty()
   taille: number;
 
-  constructor(pokemon: any) {
+  constructor(pokemon: Pokemon) {
     super(pokemon);
     this.poids = pokemon.poids;
     this.taille = pokemon.taille;

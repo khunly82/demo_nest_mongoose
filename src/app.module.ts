@@ -17,19 +17,19 @@ import { NestjsFormDataModule } from 'nestjs-form-data';
   controllers: [TestController, PokemonController],
   providers: [
     {
-      provide: 'DB_CONNECTION',
+      provide: Connection,
       useFactory: async () => await mongoose.connect(process.env.MONGO_URI!)
     },
     {
       provide: 'POKEMON_MODEL',
       useFactory: (connection: Connection) => connection.model('pokemon', pokemonSchema),
-      inject: ['DB_CONNECTION']
+      inject: [Connection]
     },
     {
       provide: 'DRESSEUR_MODEL',
       useFactory: (connection: Connection) => connection.model('dresseur', dresseurSchema),
-      inject: ['DB_CONNECTION']
-    }
+      inject: [Connection]
+    },
   ],
 })
 export class AppModule {}

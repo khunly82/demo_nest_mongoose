@@ -12,17 +12,18 @@ import {
 } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { ApiBody, ApiConsumes, ApiProduces, ApiResponse } from '@nestjs/swagger';
-import { PokemonFormDto } from '../../dto/pokemon-form.dto';
+import { PokemonFormDto } from '../dto/pokemon-form.dto';
 import { FormDataRequest } from 'nestjs-form-data';
 import * as sharp from 'sharp';
-import { PokemonIndexDto } from '../../dto/pokemon-index.dto';
-import { PokemonDetailsDto } from '../../dto/pokemon-details.dto';
+import { PokemonIndexDto } from '../dto/pokemon-index.dto';
+import { PokemonDetailsDto } from '../dto/pokemon-details.dto';
+import { Pokemon } from '../models/pokemon.model';
 
 @Controller('pokemon')
 export class PokemonController {
 
   constructor(
-    @Inject('POKEMON_MODEL') private pokemonModel: Model<any>
+    @Inject('POKEMON_MODEL') private pokemonModel: Model<Pokemon>,
   ) { }
 
   @ApiResponse({ type: [PokemonIndexDto] })
