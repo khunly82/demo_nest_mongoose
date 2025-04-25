@@ -8,13 +8,14 @@ import { PokemonController } from './controllers/pokemon.controller';
 import * as process from 'node:process';
 import { ConfigModule } from '@nestjs/config';
 import { NestjsFormDataModule } from 'nestjs-form-data';
+import { DresseurController } from './controllers/dresseur.controller';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
     NestjsFormDataModule,
   ],
-  controllers: [TestController, PokemonController],
+  controllers: [TestController, PokemonController, DresseurController],
   providers: [
     {
       provide: Connection,

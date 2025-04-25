@@ -6,6 +6,6 @@ export const dresseurSchema = new mongoose.Schema({
   pokemons: [new mongoose.Schema({
     nom: String,
     niveau: 'Int32',
-    race: { type: 'ObjectId', ref: 'Pokemon' }
+    race: { type: 'ObjectId', ref: 'pokemon' }
   })]
 }, { collection: 'dresseurs' });

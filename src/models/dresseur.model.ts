@@ -6,7 +6,7 @@ export interface Dresseur extends Document {
   pokemons: DresseurPokemon[];
 }
 
-interface DresseurPokemon extends Document {
+export interface DresseurPokemon extends Document {
   nom: string;
   niveau: number;
   race: ObjectId
