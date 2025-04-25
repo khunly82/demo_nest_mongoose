@@ -1,9 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { ArrayMaxSize, ArrayMinSize, IsInt, IsNotEmpty, IsNumber, MaxLength, Min, MinLength } from 'class-validator';
 import { HasMimeType, IsFile, MaxFileSize, MemoryStoredFile } from 'nestjs-form-data';
+import { Type } from 'class-transformer';
 
 export class PokemonFormDto {
   @IsNotEmpty()
+  @Type(() => Number)
+  @IsInt()
+  @Min(1)
   @ApiProperty({ type: 'integer' })
   numero: number;
 
@@ -28,10 +32,14 @@ export class PokemonFormDto {
   image: MemoryStoredFile;
 
   @IsNotEmpty()
+  @IsInt()
+  @Type(() => Number)
   @ApiProperty()
   poids: number;
 
   @IsNotEmpty()
+  @IsNumber()
+  @Type(() => Number)
   @ApiProperty()
   taille: number;
 }
